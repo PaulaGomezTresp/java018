@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+h1{
+	font-family:Italic;
+	text-align: center;
+}
+tr,td{
+	border: 2px solid #800080;
+}
+table caption{
+	color: black;
+	font-size: 1.5em;
+}
+th {
+	background: #800080;
+	color: white;
+	text-align: center;
+	border: 2px solid black;
+}
+
+td {
+	background: #ff80c0;
+	color: black;
+	text-align: center;
+	
+}
+
+
