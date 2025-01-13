@@ -1,6 +1,6 @@
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<%@page import="es.cie.repositorio.LibroRepositoryMemoria" %>
+	<%@page import="es.cie.repositorio.*" %>
 	<%@page import="es.cie.negocio.Libro" %>
     <%@page import="java.util.List" %>
 <!DOCTYPE html>
@@ -12,11 +12,34 @@
 </head>
 
 <%
-LibroRepositoryMemoria repo=new LibroRepositoryMemoria();
-List<Libro> lista= repo.buscarTodos();
+
+
+LibroRepository repo=new LibroRepositoryMemoria();
+String titulo= request.getParameter("Titulo");
+String autor= request.getParameter("Autor");
+
+List<Libro> lista=null;
+
+if(titulo!=null){
+	lista=repo.buscarPorTitulo(titulo);
+}else if(autor!=null){ 
+	lista=repo.buscarPorAutor(autor);
+}else{	
+	lista=repo.buscarTodos();
+}
 %>
 
 <body>
+<form method="get">
+Título:<input type="text" name="Titulo"/>
+<input type="submit" value="Buscar titulo"/>
+</form>
+
+<form method="get">
+Autor:<input type="text" name="Autor"/>
+<input type="submit" value="Buscar Autor"/>
+</form>
+
 <h1> INVENTARIO </h1>
 <table>
 <caption><b>LISTA DE LIBROS</b></caption>
